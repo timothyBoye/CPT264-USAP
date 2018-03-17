@@ -1,0 +1,287 @@
+commit e96062ef247e15a606534a20317b69efaba5f6ad
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 16:23:34 2017 +1100
+
+    new server, had to change puppet conf file
+
+commit 71fec05be3351de132994a00a5cac9c838a5da4b
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:55:42 2017 +1100
+
+    another bad link fixed
+
+commit 133365bda79dcebb04071a5e9ad409967a44d258
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:53:45 2017 +1100
+
+    bad link fixed
+
+commit 17017e79edbb4d94395f1e42c34a1469a1e7a631
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:50:54 2017 +1100
+
+    package name updates to work on RHEL
+
+commit a483587ad6bfc340b8ba5e44bac17ab2a33dc8a0
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:40:27 2017 +1100
+
+    bug fix, bad code
+
+commit f26d7dc9a70f550a0b3b674b6f9ea80ca8a03a1c
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:36:44 2017 +1100
+
+    config changes to try and get the code working on RHEL
+
+commit 141f0d0abbd67a6e65657d9e9ba1c411c6e8ec34
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 15:20:30 2017 +1100
+
+    Out of order execution
+
+commit f04911703a2414f92e246581b1bd7ce7e0f3400d
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 11:10:26 2017 +1100
+
+    Added my.cnf for DB
+
+commit 07538afa21f1e20949cd5b7847ed99be8f13afc9
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 16 11:06:54 2017 +1100
+
+    subscribed services
+
+commit 36d5d3d9c99e334471313963a540b4479ba78db4
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 15:50:45 2017 +1100
+
+     try vnc 2
+
+commit 833916349e4a70e33fbdd8368db42ca91da06354
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 15:48:12 2017 +1100
+
+    fix a couple of errors
+
+commit c880d6880d6da765e008d969710ecef4eeca8de6
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 15:45:23 2017 +1100
+
+    ttempt to start vnc
+
+commit 2492084f4c241ac46269bdb9c4ff92312cf54e77
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 14:35:37 2017 +1100
+
+    still having issues with permissions, hopefully this helps, added command to ensure titan hasn't already been mounted
+
+commit e35b7fb0037d6cb22b9e183a4a68120ed00458be
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 14:32:16 2017 +1100
+
+    Fixed mariadb start, hopefully fixed can't change owner issue
+
+commit f9f8a6a5537acfc89b739284ff22fd45a1f2b50e
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 14:27:11 2017 +1100
+
+    God damn titan has locked me out changing to jupiter
+
+commit fd5544ab4dcb85fdbde24230d0b4fefc5682ad6c
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 14:14:01 2017 +1100
+
+    diddnt add exec path
+
+commit ee7763833c22f4d43ac8d7203ccab290ecec25ac
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 14:12:01 2017 +1100
+
+    added mount immediately
+
+commit e474ca734d17c9b667c2a46ffd708b7af8144477
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 13:49:05 2017 +1100
+
+    Forgot to add the fstab file path
+
+commit 86c73176e85fac6a99d58246fbc61bf5e140201e
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Tue Nov 14 13:47:48 2017 +1100
+
+    Added fstab to mount beccas titan conection
+
+commit 07653171c9a3296f484795275f63c6ffc7999766
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 18:07:22 2017 +1100
+
+    add fred to sudo
+
+commit 38c21fea8ebc385a08e19b457387cc4930789bd7
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 18:05:03 2017 +1100
+
+    dd fred to root
+
+commit 2414d6f526e5526fe5b2ce1658031db75ee3acc9
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 18:02:40 2017 +1100
+
+    iForgot the to save confs.pp with sudoers file command
+
+commit b88538bdd646c4d69546f9e5b838370c80a128f5
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 18:00:27 2017 +1100
+
+    Fixed port on httpd.conf, added sshd_config and sudoers files
+
+commit c7a69365bbed3548f356ac38f73c305786a4fa9a
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 17:26:10 2017 +1100
+
+    dded www folder
+
+commit 0f434bf99090fe550a607d7591d84f44c247ffd8
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 17:22:05 2017 +1100
+
+    Added httpd.conf
+
+commit fd9d72bf8b5ca8f5663794a82d83fb8c0cbf2b12
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 17:00:21 2017 +1100
+
+    Try and launch more services
+
+commit 1c28b6ab058c8d440f21bf02467bde5e5a7f1e5d
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 16:52:09 2017 +1100
+
+    Attempt to fire up services
+
+commit edf4f0a6170aeb50ecf49ef792ad565751e49fd7
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 16:35:46 2017 +1100
+
+    Still working on dia2code
+
+commit 2be48ceb1d2a35820063eb020d117236cb196134
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 16:33:54 2017 +1100
+
+    Attempt to install dia2code
+
+commit e2cb5f40ca83ebae5b855739dd7b454bd7277686
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 16:32:21 2017 +1100
+
+    Attempt to add dia2code
+
+commit 6af20229c1acfffda01e04e65559e56c7b82d7ea
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 16:24:10 2017 +1100
+
+    mproved packages code
+
+commit 218cfbf778f12ae2b39e90d681a96d730d54d83b
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 15:12:04 2017 +1100
+
+    fixed timestamp
+
+commit 4f31bf749d200492e51345db449ce797483e153c
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Mon Nov 13 14:57:05 2017 +1100
+
+    dded comments, implemented question 6
+
+commit ab7d8d5d2ceb1d48db80dfffedf6f9bd47df6a04
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 8 14:47:48 2017 +1100
+
+    fixed some errors in packages.pp
+
+commit 255b43aabd33c0f6a67796534662baada8cf0727
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 8 14:38:04 2017 +1100
+
+    dded service ensure running
+
+commit 8c4e2212140e756814c5a22eac4d9779b7882a7f
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 8 14:24:57 2017 +1100
+
+    Added .bash_profile skeleton
+
+commit b09054ed5501fc51079c552ec3c006c489746fb3
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 8 14:06:21 2017 +1100
+
+    Added ssh hosts and commented out packages not working on my local system (will fix when using AWS).
+
+commit 7b511c1d8e3fe628f6d6d27ac3a2654ed34514d0
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 8 13:36:18 2017 +1100
+
+    Added SSH Key for wilma and the last of the packages.
+
+commit b23048dea240569a721d30530a50ebc067076374
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 16:22:01 2017 +1100
+
+    Removed some bad os family names
+
+commit 33387183efb5a4b6a87d69fb8d6032acb75da4e0
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 16:17:34 2017 +1100
+
+    Added dia2code from source
+
+commit 05a2357ad3e9b22e806c13fadf948496c06a68a0
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 15:57:10 2017 +1100
+
+    Added packages pp file for defining the packages we need
+
+commit 43b4de0e443663678ad6072d929d828fca7c1f6d
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 15:34:10 2017 +1100
+
+    had the file stricture wrong, moved the puppet.conf to files folder
+
+commit ef0b0445cd11f695840e48faa3ba9a8d86107fa3
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 15:23:45 2017 +1100
+
+    Attempt 2 editing puppet.config file
+
+commit 8b52955cccb5606ddced7032aac4a2de26ab6b37
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 14:48:28 2017 +1100
+
+    dded a new puppet file for editing the puppet.conf file
+
+commit a46bea989d684266458b657be7687935c1225ad4
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 14:27:17 2017 +1100
+
+    Added sha512 passwords for users
+
+commit 27df4e9d6dce5fd04797fd2575e3902626b897f0
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 13:08:14 2017 +1100
+
+    Saving the enivornment/production folder structure to the git repo for clarity etc.
+
+commit b65e9466a136f62eb25a38aec352a1abc179f2e1
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Thu Nov 2 12:27:21 2017 +1100
+
+    Added pp file for creation of users and groups
+
+commit 066aad9df996117d0544f1ce708479c0c0247060
+Author: Timothy Boye <s3482043@student.rmit.edu.au>
+Date:   Wed Nov 1 14:27:58 2017 +1100
+
+    Initial commit for the repository and creation of the readme file

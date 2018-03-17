@@ -1,0 +1,184 @@
+#!/bin/bash
+
+# Binaries
+SHA='/usr/bin/shasum'
+AWK='/usr/bin/awk'
+DATE='/bin/date'
+STDIN='/dev/stdin'
+SED='/usr/bin/sed'
+WC='/usr/bin/wc'
+CP='/bin/cp'
+
+# Files
+inputFile="$STDIN" #passwords file
+copyFile="s3482043.passowrds.copy" #file we'll copy the passwords file to for working with
+crackedFile="s3482043.cracked.passwords" #file cracked passwords are copied to
+commonWordsFile="${1:-"s3482043.common.words"}" #file containing the common passwords
+dictionaryWordsFile="${2:-"s3482043.linux.words"}" #file containing a dictionary of words
+
+# Globals
+timeout=120 #Set to 120 to stop brute force at 2 minutes
+successCount=0 #number of successeful cracks
+
+#
+# function to test a word against a hash
+function test {
+    word=$1
+    found=0
+    printf '\r%s                         ' "$word"
+    # Suppress new line character for normal passwords
+    try=$(echo -n "$word" | "$SHA" -a 256 | "$AWK" '{print$1}')
+    # The command above suppresses the new line character
+    # uncomment this if some passwords may have it for some reason
+    # trywithnewline=$(echo "$word" | "$SHA" -a 256 | "$AWK" '{print$1}')
+    while read -r password
+    do
+        # SETUP user, split the user from the hash
+        hash=${password#*:}
+        user=${password%%:*}
+        if [[ "$try" = "$hash" ]] # || "$trywithnewline" = "$hash" ]]
+        then
+            printf '\r\033[0;32mThe guess \"%s\" has the same hash as %ss password\033[0m\n' "$word" "$user"
+            "$SED" -i "/$password/d" $copyFile
+            echo "The guess \"$word\" has the same hash as ${user}'s password" >> "$crackedFile"
+            ((successCount++))
+            found=1
+            linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+            if [[ "$linesLeft" = 0 ]]
+            then
+                break 1
+            fi
+        fi
+    # Goto next user
+    done < "$copyFile"
+    
+    return $found
+}
+
+#
+# function to run through a file of words against the passwords
+function readFile {
+    while read -r word
+    do
+        echo -n ""
+        test "$word"
+        found=$?
+        if [[ "$found" = 1 ]]
+        then
+            linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+            if [[ "$linesLeft" = 0 ]]
+            then
+                break 2
+            fi
+        fi
+    done < "$1"
+}
+
+
+#
+# MAIN APPLICATION
+#
+
+
+# Copy password file so we can edit it
+echo "Copying password file so it can be edited..."
+"$CP" "$inputFile" "$copyFile"
+# Remove invalid data such as blank lines and lines not
+# formated as [username]:[hash], this ensures we only loop
+# through those lines once to remove them.
+echo "Checking file integrity and removing bad lines..."
+"$SED" -i '/^\s*$/d' $copyFile
+while read -r password
+do
+    if ! [[ $password =~ ^[[:alnum:]]*:[[:alnum:]]*$ ]]
+    then
+        "$SED" -i "/$password/d" $copyFile
+    fi
+done < "$copyFile"
+
+# Attempt common words if there are passwords
+linesLeft=$("$WC" -l < "$copyFile")
+if [[ "$linesLeft" -gt 0 ]]
+then
+    echo "Attempting common words..."
+    readFile "$commonWordsFile"
+fi
+
+# Attempt dictionary words if there are passwords left
+linesLeft=$("$WC" -l < "$copyFile")
+if [[ "$linesLeft" -gt 0 ]]
+then
+    printf '\rAttempting dictionary words...\n'
+    readFile "$dictionaryWordsFile"
+fi
+
+# Attempt letter combinations if there are passwords left
+linesLeft=$("$WC" -l < "$copyFile")
+if [[ "$linesLeft" -gt 0 ]]
+then
+    printf '\rAttempting brute force (%s seconds)...\n' "$timeout"
+    start="$($DATE +%s)"
+    # this set of nested loops loops through the letters a > aa > aaa > aaaa > aaab > etc
+    # ... > b > ba > baa > baaa > baab > baac > etc
+    # because of the break [n] command we can skip a lot of if statements in each loop and just break out of the whole structure
+    for c1 in {a..z}
+    do
+        # single letter password test
+        test "$c1"
+        if [ "$?" = 1 ] ; then
+            linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+            if [[ "$linesLeft" = 0 ]]
+            then
+                break
+            fi
+        fi
+        for c2 in {a..z}
+        do
+            # two letter password test
+            test "$c1$c2"
+            if [ "$?" = 1 ] ; then
+                linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+                if [[ "$linesLeft" = 0 ]]
+                then
+                    break 2
+                fi
+            fi
+            for c3 in {a..z}
+            do
+                # three letter password test
+                test "$c1$c2$c3"
+                if [ "$?" = 1 ] ; then
+                    linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+                    if [[ "$linesLeft" = 0 ]]
+                    then
+                        break 3
+                    fi
+                fi
+                for c4 in {a..z}
+                do
+                    # four letter password test
+                    test "$c1$c2$c3$c4"
+                    if [ "$?" = 1 ] ; then
+                        linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+                        if [[ "$linesLeft" = 0 ]]
+                        then
+                            break 4
+                        fi
+                    fi
+                    # test we haven't run out of time
+                    now="$($DATE +%s)"
+                    then=$((start + timeout))
+                    if [ "$then" -lt "$now" ] ; then
+                        printf '\r\033[0;31mBrute forcing passwords timed out\033[0m\n\n'
+                        break 4
+                    fi
+                done
+            done
+        done
+    done
+fi
+
+# Finish
+printf '%s passwords cracked (saved to %s)\n' "$successCount" "$crackedFile"
+linesLeft=$("$WC" -l "$copyFile" | "$AWK" '{print $1}')
+printf '%s passwords not cracked (saved to %s)\n\nProgram Complete\n\n' "$linesLeft" "$copyFile"

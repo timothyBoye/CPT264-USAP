@@ -1,0 +1,12 @@
+#
+# /etc/fstab
+# Created by anaconda on Thu Aug 31 10:41:24 2017
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup-lv_root /                       ext4    defaults        1 1
+UUID=4d528de1-77f0-4632-b04d-e837ad46da0b /boot                   ext4    defaults        1 2
+/dev/mapper/VolGroup-lv_home /home                   ext4    defaults        1 2
+/dev/mapper/VolGroup-lv_swap swap                    swap    defaults        0 0
+sshfs#s3482043@titan.csit.rmit.edu.au: /home/becca/titan fuse defaults 0 0
